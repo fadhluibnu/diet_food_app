@@ -1,4 +1,4 @@
-import 'package:diet_food_app/halaman_utama.dart';
+import 'package:diet_food_app/template/pages_template.dart';
 import 'package:diet_food_app/welcome_page.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
     // return HalamanUtama();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HalamanUtama(),
+      home: WelcomeOne(),
     );
   }
 }

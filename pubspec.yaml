@@ -82,6 +82,12 @@ flutter:
     - family: search_icon
       fonts:
         - asset: fonts/my_search.ttf
+    - family: home_outline_icon
+      fonts:
+        - asset: fonts/IconHomeOutline.ttf
+    - family: filter_icon
+      fonts:
+        - asset: fonts/IconFilter.ttf
     - family: icon_home_fill
       fonts:
         - asset: fonts/home_fill.ttf

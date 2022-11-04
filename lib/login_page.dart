@@ -1,4 +1,4 @@
-import 'package:diet_food_app/halaman_utama.dart';
+import 'package:diet_food_app/template/pages_template.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -20,11 +20,14 @@ class _LoginPageState extends State<LoginPage> {
           ),
           backgroundColor: Colors.red,
         ),
-        body: ElevatedButton(onPressed: () {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context){
-            return HalamanUtama();
-          }));
-        }, child: Text("To Halaman Utama")),
+        body: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .pushReplacement(MaterialPageRoute(builder: (context) {
+                return PagesTemplate();
+              }));
+            },
+            child: Text("To Halaman Utama")),
         // body: ,
       ),
     );

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:diet_food_app/login_page.dart';
 
-class HomeOne extends StatefulWidget {
-  const HomeOne({super.key});
+class WelcomeOne extends StatefulWidget {
+  const WelcomeOne({super.key});
 
   @override
-  State<HomeOne> createState() => _HomeOneState();
+  State<WelcomeOne> createState() => _WelcomeOneState();
 }
 
-class _HomeOneState extends State<HomeOne> {
+class _WelcomeOneState extends State<WelcomeOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +58,7 @@ class _HomeOneState extends State<HomeOne> {
                                   onPressed: () {
                                     Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(builder: (context) {
-                                      return HomeTwo();
+                                      return WelcomeTwo();
                                     }));
                                   },
                                   child: Padding(
@@ -77,14 +77,14 @@ class _HomeOneState extends State<HomeOne> {
   }
 }
 
-class HomeTwo extends StatefulWidget {
-  const HomeTwo({super.key});
+class WelcomeTwo extends StatefulWidget {
+  const WelcomeTwo({super.key});
 
   @override
-  State<HomeTwo> createState() => _HomeTwoState();
+  State<WelcomeTwo> createState() => _WelcomeTwoState();
 }
 
-class _HomeTwoState extends State<HomeTwo> {
+class _WelcomeTwoState extends State<WelcomeTwo> {
   String tag_photo = 'image1to2';
   String tag_btn = 'btn1to2';
 
@@ -152,7 +152,7 @@ class _HomeTwoState extends State<HomeTwo> {
                                   onPressed: () {
                                     Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(builder: (context) {
-                                      return HomeThree();
+                                      return WelcomeThree();
                                     }));
                                   },
                                   child: Padding(
@@ -171,14 +171,14 @@ class _HomeTwoState extends State<HomeTwo> {
   }
 }
 
-class HomeThree extends StatefulWidget {
-  const HomeThree({super.key});
+class WelcomeThree extends StatefulWidget {
+  const WelcomeThree({super.key});
 
   @override
-  State<HomeThree> createState() => _HomeThreeState();
+  State<WelcomeThree> createState() => _WelcomeThreeState();
 }
 
-class _HomeThreeState extends State<HomeThree> {
+class _WelcomeThreeState extends State<WelcomeThree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

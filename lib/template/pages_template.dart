@@ -1,17 +1,17 @@
-import 'package:diet_food_app/pages/dashboard_page.dart';
+import 'package:diet_food_app/pages/home_page.dart';
 import 'package:diet_food_app/pages/profile_page.dart';
 import 'package:diet_food_app/pages/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class HalamanUtama extends StatefulWidget {
-  const HalamanUtama({super.key});
+class PagesTemplate extends StatefulWidget {
+  const PagesTemplate({super.key});
 
   @override
-  State<HalamanUtama> createState() => _HalamanUtamaState();
+  State<PagesTemplate> createState() => _PagesTemplateState();
 }
 
-class _HalamanUtamaState extends State<HalamanUtama> {
+class _PagesTemplateState extends State<PagesTemplate> {
   int _selectedPage = 0;
 
   void _changeSelectedPage(index) {
@@ -23,6 +23,8 @@ class _HalamanUtamaState extends State<HalamanUtama> {
   // icon home
   static const IconData icon_home =
       IconData(0xe801, fontFamily: "icon_home_fill", fontPackage: null);
+  static const IconData icon_home_outline =
+      IconData(0xe803, fontFamily: "home_outline_icon", fontPackage: null);
 
   // icon search
   static const IconData icon_search =
@@ -31,7 +33,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: _selectedPage == 0
-            ? DashboardPage()
+            ? HomePage()
             : _selectedPage == 1
                 ? SearchPage()
                 : ProfilePage(),
@@ -75,7 +77,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                               size: 20,
                             )
                           : Icon(
-                              icon_home,
+                              icon_home_outline,
                               color: Color.fromARGB(255, 141, 141, 141),
                               size: 20,
                             )),

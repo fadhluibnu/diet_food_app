@@ -1,16 +1,39 @@
+import 'package:diet_food_app/content/content_pages.dart';
+import 'package:diet_food_app/route_animation/route_slide_animation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class DashboardPage extends StatefulWidget {
-  const DashboardPage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<DashboardPage> createState() => _DashboardPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _DashboardPageState extends State<DashboardPage> {
+class _HomePageState extends State<HomePage> {
   TextEditingController controller_search = TextEditingController();
+  static const IconData icon_filter =
+      IconData(0xe802, fontFamily: "filter_icon", fontPackage: null);
 
   List<Widget> _widgetData = [];
+
+  bool filter_color = false;
+
+  setBoolSP() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('value', "true");
+  }
+
+  String test = "false";
+
+  void getBollSP() async {
+    SharedPreferences prefsget = await SharedPreferences.getInstance();
+    setState(() {
+      test = (prefsget.getString("value") ?? "false");
+    });
+    // return prefs;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,30 +93,32 @@ class _DashboardPageState extends State<DashboardPage> {
                             ),
                           ),
                           Flexible(
-                              flex: 1,
-                              child: Align(
-                                alignment: Alignment(0, 0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(15),
-                                  child: SizedBox(
+                            flex: 1,
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      filter_color = true;
+                                    });
+                                    print(filter_color);
+                                  },
+                                  child: Container(
+                                    color: Color.fromARGB(255, 201, 239, 255),
                                     width: 50,
                                     height: 50,
-                                    child: ElevatedButton(
-                                      child: Icon(
-                                        Icons.sort,
-                                        color:
-                                            Color.fromARGB(255, 114, 116, 255),
-                                      ),
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                        primary:
-                                            Color.fromARGB(255, 201, 239, 255),
-                                        shadowColor: Colors.transparent,
-                                      ),
+                                    child: Icon(
+                                      icon_filter,
+                                      size: 17,
+                                      color: Color.fromARGB(255, 114, 116, 255),
                                     ),
                                   ),
                                 ),
-                              ))
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),
@@ -113,85 +138,95 @@ class _DashboardPageState extends State<DashboardPage> {
                     padding: EdgeInsets.only(left: 10),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        width: 267,
-                        height: 305,
-                        color: Colors.black12,
-                        child: Stack(
-                          children: [
-                            Image(
-                              image: AssetImage("assets/images/mayo_diet.png"),
-                              fit: BoxFit.cover,
-                            ),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                height: 142,
-                                decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                        colors: [
-                                      Colors.transparent,
-                                      Colors.black
-                                    ],
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter)),
-                                child: Align(
-                                  alignment: Alignment(0, 1),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(RouteSlideAnimation(
+                              child: ContentPage(),
+                              direction: AxisDirection.left));
+                        },
+                        child: Container(
+                          width: 267,
+                          height: 305,
+                          color: Colors.black12,
+                          child: Stack(
+                            children: [
+                              Image(
+                                image:
+                                    AssetImage("assets/images/mayo_diet.png"),
+                                fit: BoxFit.cover,
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  height: 142,
+                                  decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                          colors: [
+                                        Colors.transparent,
+                                        Colors.black
+                                      ],
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter)),
+                                  child: Align(
+                                    alignment: Alignment(0, 1),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(20),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "Mayo Diet",
+                                            style: TextStyle(
+                                                fontFamily: 'poppins_medium',
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white),
+                                          ),
+                                          Icon(
+                                            Icons.favorite_border_rounded,
+                                            color: Colors.white,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment(-1, -1),
+                                child: Padding(
+                                  padding: EdgeInsets.all(20),
+                                  child: Container(
+                                    constraints: BoxConstraints(
+                                      maxWidth: 68,
+                                    ),
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 4, horizontal: 5),
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Color.fromARGB(174, 141, 141, 141),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
+                                        Icon(Icons.person, color: Colors.white),
                                         Text(
-                                          "Mayo Diet",
+                                          "255",
                                           style: TextStyle(
-                                              fontFamily: 'poppins_medium',
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white),
-                                        ),
-                                        Icon(
-                                          Icons.favorite_border_rounded,
-                                          color: Colors.white,
+                                              fontFamily: 'poppins_regular',
+                                              color: Colors.white,
+                                              fontSize: 15),
                                         )
                                       ],
                                     ),
                                   ),
                                 ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment(-1, -1),
-                              child: Padding(
-                                padding: EdgeInsets.all(20),
-                                child: Container(
-                                  constraints: BoxConstraints(
-                                    maxWidth: 68,
-                                  ),
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 4, horizontal: 5),
-                                  decoration: BoxDecoration(
-                                      color: Color.fromARGB(174, 141, 141, 141),
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Icon(Icons.person, color: Colors.white),
-                                      Text(
-                                        "255",
-                                        style: TextStyle(
-                                            fontFamily: 'poppins_regular',
-                                            color: Colors.white,
-                                            fontSize: 15),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
