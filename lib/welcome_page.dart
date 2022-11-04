@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:diet_food_app/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomeOne extends StatefulWidget {
   const WelcomeOne({super.key});
@@ -179,6 +180,11 @@ class WelcomeThree extends StatefulWidget {
 }
 
 class _WelcomeThreeState extends State<WelcomeThree> {
+  void setSharedPref() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setBool("welcome", true);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -226,6 +232,7 @@ class _WelcomeThreeState extends State<WelcomeThree> {
                               width: MediaQuery.of(context).size.width,
                               child: ElevatedButton(
                                   onPressed: () {
+                                    setSharedPref();
                                     Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(builder: (context) {
                                       return LoginPage();

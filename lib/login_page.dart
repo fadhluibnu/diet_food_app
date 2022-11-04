@@ -1,5 +1,6 @@
 import 'package:diet_food_app/template/pages_template.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,6 +10,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  void setSharedPref() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setBool("login", true);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,6 +28,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
         body: ElevatedButton(
             onPressed: () {
+              setSharedPref();
               Navigator.of(context)
                   .pushReplacement(MaterialPageRoute(builder: (context) {
                 return PagesTemplate();
