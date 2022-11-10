@@ -5,20 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class PagesTemplate extends StatefulWidget {
-  const PagesTemplate({super.key});
+  final pages;
+  final index;
+  const PagesTemplate({super.key, this.pages, this.index});
 
   @override
   State<PagesTemplate> createState() => _PagesTemplateState();
 }
 
 class _PagesTemplateState extends State<PagesTemplate> {
-  int _selectedPage = 0;
-
-  void _changeSelectedPage(index) {
-    setState(() {
-      _selectedPage = index;
-    });
-  }
+  // void _changeSelectedPage(index) {
+  //   setState(() {
+  //     _selectedPage = index;
+  //   });
+  // }
 
   // icon home
   static const IconData icon_home =
@@ -31,12 +31,14 @@ class _PagesTemplateState extends State<PagesTemplate> {
       IconData(0xe800, fontFamily: "search_icon", fontPackage: null);
   @override
   Widget build(BuildContext context) {
+    var _selectedPage = widget.index;
     return Scaffold(
-        body: _selectedPage == 0
-            ? HomePage()
-            : _selectedPage == 1
-                ? SearchPage()
-                : ProfilePage(),
+        body: widget.pages,
+        // _selectedPage == 0
+        //     ? HomePage()
+        //     : _selectedPage == 1
+        //         ? SearchPage()
+        //         : ProfilePage(),
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         floatingActionButton: Padding(
           padding: const EdgeInsets.only(right: 15),
@@ -63,7 +65,41 @@ class _PagesTemplateState extends State<PagesTemplate> {
                 children: [
                   IconButton(
                       onPressed: () {
-                        _changeSelectedPage(0);
+                        if (_selectedPage != 0) {
+                          Navigator.of(context).pushReplacement(
+                              PageRouteBuilder(
+                                  pageBuilder: (context, animation,
+                                          secondaryAnimation) =>
+                                      PagesTemplate(
+                                        pages: HomePage(),
+                                        index: 0,
+                                      ),
+                                  // transitionDuration: Duration.zero,
+                                  // reverseTransitionDuration: Duration.zero
+                                  transitionsBuilder: (context, animation,
+                                      secondaryAnimation, child) {
+                                    const begin = Offset(0, 0);
+                                    const end = Offset.zero;
+
+                                    const curves = Curves.easeInOut;
+
+                                    var twwn = Tween(begin: begin, end: end)
+                                        .chain(CurveTween(curve: curves));
+
+                                    return SlideTransition(
+                                      position: animation.drive(twwn),
+                                      child: child,
+                                    );
+                                  })
+                              //     MaterialPageRoute(builder: (context) {
+                              //   return PagesTemplate(
+                              //     pages: SearchPage(),
+                              //     index: 1,
+                              //   );
+                              // })
+                              );
+                        }
+                        // _changeSelectedPage(0);
                       },
                       icon: _selectedPage == 0
                           ? Icon(
@@ -83,7 +119,41 @@ class _PagesTemplateState extends State<PagesTemplate> {
                             )),
                   IconButton(
                       onPressed: () {
-                        _changeSelectedPage(1);
+                        if (_selectedPage != 1) {
+                          Navigator.of(context).pushReplacement(
+                              PageRouteBuilder(
+                                  pageBuilder: (context, animation,
+                                          secondaryAnimation) =>
+                                      PagesTemplate(
+                                        pages: SearchPage(),
+                                        index: 1,
+                                      ),
+                                  // transitionDuration: Duration.zero,
+                                  // reverseTransitionDuration: Duration.zero
+                                  transitionsBuilder: (context, animation,
+                                      secondaryAnimation, child) {
+                                    const begin = Offset(0, 0);
+                                    const end = Offset.zero;
+
+                                    const curves = Curves.easeInOut;
+
+                                    var twwn = Tween(begin: begin, end: end)
+                                        .chain(CurveTween(curve: curves));
+
+                                    return SlideTransition(
+                                      position: animation.drive(twwn),
+                                      child: child,
+                                    );
+                                  })
+                              //     MaterialPageRoute(builder: (context) {
+                              //   return PagesTemplate(
+                              //     pages: SearchPage(),
+                              //     index: 1,
+                              //   );
+                              // })
+                              );
+                        }
+                        // _changeSelectedPage(1);
                       },
                       icon: _selectedPage == 1
                           ? Icon(
@@ -105,7 +175,7 @@ class _PagesTemplateState extends State<PagesTemplate> {
                     padding: const EdgeInsets.only(right: 50),
                     child: IconButton(
                         onPressed: () {
-                          _changeSelectedPage(2);
+                          // _changeSelectedPage(2);
                         },
                         icon: _selectedPage == 2
                             ? Icon(Icons.person_rounded,

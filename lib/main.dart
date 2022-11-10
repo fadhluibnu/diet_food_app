@@ -1,4 +1,5 @@
 import 'package:diet_food_app/login_page.dart';
+import 'package:diet_food_app/pages/home_page.dart';
 import 'package:diet_food_app/template/pages_template.dart';
 import 'package:diet_food_app/welcome_page.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     var inisialisasi;
     if (welcome_page != false && login_page != false) {
-      inisialisasi = PagesTemplate();
+      inisialisasi = PagesTemplate(
+        pages: HomePage(),
+        index: 0,
+      );
     } else if (welcome_page != false) {
       inisialisasi = LoginPage();
     } else if (welcome_page == false) {

@@ -10,6 +10,14 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text("Search Page"));
+    return Container(
+      child: Hero(
+        tag: "gmorning",
+        child: Text(
+          "Good Morning",
+          style: TextStyle(fontFamily: 'poppins_bold', fontSize: 24),
+        ),
+      ),
+    );
   }
 }

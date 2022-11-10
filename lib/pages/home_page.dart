@@ -58,10 +58,13 @@ class _HomePageState extends State<HomePage> {
                       style:
                           TextStyle(fontFamily: 'poppins_medium', fontSize: 16),
                     ),
-                    Text(
-                      "Good Morning",
-                      style:
-                          TextStyle(fontFamily: 'poppins_bold', fontSize: 24),
+                    Hero(
+                      tag: "gmorning",
+                      child: Text(
+                        "Good Morning",
+                        style:
+                            TextStyle(fontFamily: 'poppins_bold', fontSize: 24),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 16, bottom: 16),
