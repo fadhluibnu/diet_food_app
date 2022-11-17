@@ -34,7 +34,8 @@ class _WelcomeOneState extends State<WelcomeOne> {
               children: [
                 Container(
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.fromLTRB(10, 30, 10, 30),
+                    // height: 410,
+                    padding: EdgeInsets.fromLTRB(16, 30, 16, 30),
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
                             colors: [Colors.transparent, Colors.black],
@@ -43,13 +44,15 @@ class _WelcomeOneState extends State<WelcomeOne> {
                     child: Column(
                       children: [
                         Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
                             child: Text(
-                              "When you talk, you are only repeating, talk, you page 3",
+                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                               style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white),
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontFamily: "poppins_semibold",
+                                  height: 1.3),
                             )),
                         Hero(
                           tag: 'btn1to2',
@@ -62,10 +65,26 @@ class _WelcomeOneState extends State<WelcomeOne> {
                                       return WelcomeTwo();
                                     }));
                                   },
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                      Color.fromARGB(255, 62, 109, 156)
+                                    ),
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(50)))),
                                   child: Padding(
                                     padding: EdgeInsets.all(15),
-                                    child: Text("Next"),
-                                  ))),
+                                    child: Text(
+                                      "Next",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white,
+                                        fontFamily: "poppins_medium",
+                                      ),
+                                    ),
+                                  ))
+                                  ),
                         )
                       ],
                     ))
@@ -128,7 +147,7 @@ class _WelcomeTwoState extends State<WelcomeTwo> {
               children: [
                 Container(
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.fromLTRB(10, 30, 10, 30),
+                    padding: EdgeInsets.fromLTRB(16, 30, 16, 30),
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
                             colors: [Colors.transparent, Colors.black],
@@ -137,13 +156,15 @@ class _WelcomeTwoState extends State<WelcomeTwo> {
                     child: Column(
                       children: [
                         Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
                             child: Text(
-                              "When you talk, you are only repeating, talk, you page 3",
+                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                               style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white),
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontFamily: "poppins_semibold",
+                                  height: 1.3),
                             )),
                         Hero(
                           tag: tag_btn,
@@ -156,10 +177,26 @@ class _WelcomeTwoState extends State<WelcomeTwo> {
                                       return WelcomeThree();
                                     }));
                                   },
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                      Color.fromARGB(255, 62, 109, 156)
+                                    ),
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(50)))),
                                   child: Padding(
                                     padding: EdgeInsets.all(15),
-                                    child: Text("Next"),
-                                  ))),
+                                    child: Text(
+                                      "Next",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white,
+                                        fontFamily: "poppins_medium",
+                                      ),
+                                    ),
+                                  ))
+                                  ),
                         )
                       ],
                     ))
@@ -209,7 +246,7 @@ class _WelcomeThreeState extends State<WelcomeThree> {
               children: [
                 Container(
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.fromLTRB(10, 30, 10, 30),
+                    padding: EdgeInsets.fromLTRB(16, 30, 16, 30),
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
                             colors: [Colors.transparent, Colors.black],
@@ -218,13 +255,15 @@ class _WelcomeThreeState extends State<WelcomeThree> {
                     child: Column(
                       children: [
                         Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
                             child: Text(
-                              "When you talk, you are only repeating, talk, you page 3",
+                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                               style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white),
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontFamily: "poppins_semibold",
+                                  height: 1.3),
                             )),
                         Hero(
                           tag: 'btn2to3',
@@ -238,10 +277,26 @@ class _WelcomeThreeState extends State<WelcomeThree> {
                                       return LoginPage();
                                     }));
                                   },
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                      Color.fromARGB(255, 62, 109, 156)
+                                    ),
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(50)))),
                                   child: Padding(
                                     padding: EdgeInsets.all(15),
-                                    child: Text("Next"),
-                                  ))),
+                                    child: Text(
+                                      "Finish",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white,
+                                        fontFamily: "poppins_medium",
+                                      ),
+                                    ),
+                                  ))
+                                  ),
                         )
                       ],
                     ))

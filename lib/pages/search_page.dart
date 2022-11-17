@@ -8,16 +8,14 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  TextEditingController controller_search = TextEditingController();
+  static const IconData icon_filter =
+      IconData(0xe802, fontFamily: "filter_icon", fontPackage: null);
+  bool filter_color = false;
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Hero(
-        tag: "gmorning",
-        child: Text(
-          "Good Morning",
-          style: TextStyle(fontFamily: 'poppins_bold', fontSize: 24),
-        ),
-      ),
+      child: Text("history")
     );
   }
 }

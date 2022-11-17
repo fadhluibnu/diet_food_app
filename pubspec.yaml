@@ -65,6 +65,9 @@ flutter:
     - assets/images/home_page_two.png
     - assets/images/home_page_three.png
     - assets/images/mayo_diet.png
+    - assets/images/splash_love.png
+    - assets/images/splash_plus.png
+    - assets/images/logo_app.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -82,6 +85,12 @@ flutter:
     - family: search_icon
       fonts:
         - asset: fonts/my_search.ttf
+    - family: lock_icon
+      fonts:
+        - asset: fonts/LockIcon.ttf
+    - family: email_icon
+      fonts:
+        - asset: fonts/EmailIcon.ttf
     - family: home_outline_icon
       fonts:
         - asset: fonts/IconHomeOutline.ttf
@@ -95,6 +104,11 @@ flutter:
       fonts:
         - asset: fonts/Poppins-Bold.ttf
         - asset: fonts/Poppins-BoldItalic.ttf
+          style: italic
+    - family: poppins_semibold
+      fonts:
+        - asset: fonts/Poppins-SemiBold.ttf
+        - asset: fonts/Poppins-SemiBoldItalic.ttf
           style: italic
     - family: poppins_medium
       fonts:
