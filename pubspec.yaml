@@ -85,6 +85,24 @@ flutter:
     - family: search_icon
       fonts:
         - asset: fonts/my_search.ttf
+    - family: icon_edit
+      fonts:
+        - asset: fonts/IconEdit.ttf
+    - family: icon_password
+      fonts:
+        - asset: fonts/IconPassword.ttf
+    - family: icon_help
+      fonts:
+        - asset: fonts/IconHelp.ttf
+    - family: icon_language
+      fonts:
+        - asset: fonts/IconLanguage.ttf
+    - family: icon_logout
+      fonts:
+        - asset: fonts/IconLogout.ttf
+    - family: icon_reward
+      fonts:
+        - asset: fonts/IconReward.ttf
     - family: lock_icon
       fonts:
         - asset: fonts/LockIcon.ttf

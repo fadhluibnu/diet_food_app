@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
 
   //   super.dispose();
   // }
-  bool? value_checkbox = false;
+  bool value_checkbox = false;
 
   @override
   Widget build(BuildContext context) {
@@ -167,26 +167,36 @@ class _LoginPageState extends State<LoginPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Checkbox(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(7)),
-                          value: this.value_checkbox,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              this.value_checkbox = value;
-                            });
-                          },
-                        ),
-                        Text(
-                          "Remember me",
-                          style: TextStyle(
-                              fontFamily: 'poppins_regular',
-                              fontSize: 14,
-                              color: Color.fromARGB(255, 82, 82, 82)),
-                        ),
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (value_checkbox) {
+                            value_checkbox = false;
+                          } else {
+                            value_checkbox = true;
+                          }
+                        });
+                      },
+                      child: Row(
+                        children: [
+                          Icon(
+                            value_checkbox
+                                ? Icons.check_box_rounded
+                                : Icons.check_box_outline_blank_rounded,
+                            color: value_checkbox
+                                ? Color.fromARGB(255, 62, 109, 156)
+                                : Color.fromARGB(255, 82, 82, 82),
+                            size: 30,
+                          ),
+                          Text(
+                            "Remember me",
+                            style: TextStyle(
+                                fontFamily: 'poppins_regular',
+                                fontSize: 14,
+                                color: Color.fromARGB(255, 82, 82, 82)),
+                          ),
+                        ],
+                      ),
                     ),
                     Text(
                       "Forgot password?",
@@ -202,15 +212,24 @@ class _LoginPageState extends State<LoginPage> {
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) {
                         return PagesTemplate();
                       }));
                     },
                     child: Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Text("Login"),
+                      padding: const EdgeInsets.all(15),
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                          fontFamily: "poppins_medium",
+                        ),
+                      ),
                     ),
                     style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(0),
                         backgroundColor: MaterialStateProperty.all(
                             Color.fromARGB(255, 62, 109, 156)),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(

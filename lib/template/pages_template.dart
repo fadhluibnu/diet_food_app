@@ -37,12 +37,12 @@ class _PagesTemplateState extends State<PagesTemplate> {
   bool _visibleTextWelcomeHome = true;
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    var screenHeight = size.height;
-    var screenWidth = size.width;
-
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Color.fromARGB(255, 62, 109, 156)
+      statusBarColor: 
+      _selectedPage == 0?
+      Color.fromARGB(255, 62, 109, 156) : _selectedPage == 1 ? Colors.transparent : Colors.transparent,
+      statusBarIconBrightness: _selectedPage == 0?
+      Brightness.light : _selectedPage == 1 ? Brightness.dark : Brightness.dark
     ));
     return Scaffold(
         body: Container(
@@ -58,10 +58,7 @@ class _PagesTemplateState extends State<PagesTemplate> {
                 Column(
                   children: [
                     _selectedPage != 0 && _selectedPage != 1
-                        ? Text(
-                            "Profile",
-                            style: TextStyle(color: Colors.black),
-                          )
+                        ? ProfilePage()
                         : Container(
                             child: Column(
                               children: [
@@ -84,7 +81,7 @@ class _PagesTemplateState extends State<PagesTemplate> {
                                                 Duration(milliseconds: 400),
                                             firstChild: Padding(
                                               padding: const EdgeInsets.only(
-                                                  top: 47),
+                                                  top: 20),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment

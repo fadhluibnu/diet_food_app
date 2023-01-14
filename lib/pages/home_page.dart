@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+          padding: EdgeInsets.fromLTRB(16, 10, 16, 0),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(top: 12),
             child: Row(children: [
               Padding(
-                padding: EdgeInsets.only(left: 10),
+                padding: EdgeInsets.only(left: 16),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: GestureDetector(
