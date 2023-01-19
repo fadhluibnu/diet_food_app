@@ -21,7 +21,7 @@ class _EditProfileState extends State<EditProfile> {
     return MaterialApp(
         home: Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(75),
+        preferredSize: Size.fromHeight(65),
         child: AppBar(
           backgroundColor: Color.fromARGB(255, 62, 109, 156),
           flexibleSpace: Column(
@@ -101,7 +101,7 @@ class _EditProfileState extends State<EditProfile> {
                 alignment: Alignment.topLeft, 
                 child: Text("Name", style: TextStyle(
                   fontSize: 16,
-                  fontFamily: 'poppins-regular'
+                  fontFamily: 'poppins_regular'
                 ))
               ),
             ),
@@ -117,10 +117,10 @@ class _EditProfileState extends State<EditProfile> {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.black, width: 0)),
+                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.black, width: 0)),
+                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
                   )),
             ),
 
@@ -131,7 +131,7 @@ class _EditProfileState extends State<EditProfile> {
                 alignment: Alignment.topLeft, 
                 child: Text("User Id", style: TextStyle(
                   fontSize: 16,
-                  fontFamily: 'poppins-regular'
+                  fontFamily: 'poppins_regular'
                 ))
               ),
             ),
@@ -147,10 +147,10 @@ class _EditProfileState extends State<EditProfile> {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.black, width: 0)),
+                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.black, width: 0)),
+                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
                   )),
             ),
 
@@ -161,7 +161,7 @@ class _EditProfileState extends State<EditProfile> {
                 alignment: Alignment.topLeft, 
                 child: Text("Email", style: TextStyle(
                   fontSize: 16,
-                  fontFamily: 'poppins-regular'
+                  fontFamily: 'poppins_regular'
                 ))
               ),
             ),
@@ -177,10 +177,10 @@ class _EditProfileState extends State<EditProfile> {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.black, width: 0)),
+                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.black, width: 0)),
+                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
                   )),
             ),
 
@@ -191,7 +191,7 @@ class _EditProfileState extends State<EditProfile> {
                 alignment: Alignment.topLeft, 
                 child: Text("Phone Number", style: TextStyle(
                   fontSize: 16,
-                  fontFamily: 'poppins-regular'
+                  fontFamily: 'poppins_regular'
                 ))
               ),
             ),
@@ -207,10 +207,10 @@ class _EditProfileState extends State<EditProfile> {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.black, width: 0)),
+                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.black, width: 0)),
+                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
                   )),
             ),
           ],
