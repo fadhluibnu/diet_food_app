@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   TextEditingController controller_search = TextEditingController();
   static const IconData icon_filter =
       IconData(0xe802, fontFamily: "filter_icon", fontPackage: null);
@@ -36,6 +37,7 @@ class _HomePageState extends State<HomePage> {
     });
     // return prefs;
   }
+  
 
   @override
   Widget build(BuildContext context) {

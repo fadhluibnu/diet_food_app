@@ -187,6 +187,7 @@ class _LayoutsState extends State<Layouts> {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.remove("welcome");
     pref.remove("login");
+    pref.remove("token");
     setState(() {
       welcome_page = (pref.getBool("welcome") ?? false);
       login_page = (pref.getBool("login") ?? false);

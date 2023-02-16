@@ -4,6 +4,7 @@ import 'package:diet_food_app/pages/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PagesTemplate extends StatefulWidget {
   const PagesTemplate({super.key});
@@ -18,6 +19,21 @@ class _PagesTemplateState extends State<PagesTemplate> {
   void _changeSelectedPage(index) {
     setState(() {
       _selectedPage = index;
+    });
+  }
+
+  String name = "";
+  String username = "";
+
+  void initState() {
+    super.initState();
+    getName();
+  }
+  void getName() async {
+    SharedPreferences namePref = await SharedPreferences.getInstance();
+    setState(() {
+      name = namePref.getString("name") ?? "";
+      username = namePref.getString("username") ?? "";
     });
   }
 
@@ -95,7 +111,7 @@ class _PagesTemplateState extends State<PagesTemplate> {
                                                               .start,
                                                       children: [
                                                         Text(
-                                                          "Hi, Valerine",
+                                                          "Hi, " + name,
                                                           style: TextStyle(
                                                               color:
                                                                   Colors.white,

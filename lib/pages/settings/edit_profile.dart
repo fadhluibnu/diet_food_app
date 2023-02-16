@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -10,11 +11,28 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  TextEditingController name = TextEditingController(text: "Example");
-  TextEditingController user_id = TextEditingController(text: "example");
-  TextEditingController email =
-      TextEditingController(text: "example@gmail.com");
-  TextEditingController phone_number = TextEditingController(text: "00000000");
+  TextEditingController name = TextEditingController();
+  TextEditingController user_id = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController phone_number = TextEditingController();
+
+
+  // String nameDisplay = "";
+  // String username = "";
+  // String emailDisplay = "";
+  void initState() {
+    super.initState();
+    getName();
+  }
+
+  void getName() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      name.text = pref.getString("name") ?? "";
+      user_id.text = pref.getString("username") ?? "";
+      email.text = pref.getString("email") ?? "";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
