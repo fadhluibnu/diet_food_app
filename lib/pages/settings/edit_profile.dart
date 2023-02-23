@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -15,7 +17,6 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController user_id = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController phone_number = TextEditingController();
-
 
   // String nameDisplay = "";
   // String username = "";
@@ -33,6 +34,9 @@ class _EditProfileState extends State<EditProfile> {
       email.text = pref.getString("email") ?? "";
     });
   }
+
+  ImagePicker picker = ImagePicker();
+  XFile? image;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +78,7 @@ class _EditProfileState extends State<EditProfile> {
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           Navigator.pop(context);
                         },
                         child: Container(
@@ -96,142 +100,163 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.all(10),
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 20),
-              child: Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(50)),
-              ),
-            ),
-
-            // NAME
-            Padding(
-              padding: const EdgeInsets.only(bottom: 4),
-              child: Align(
-                alignment: Alignment.topLeft, 
-                child: Text("Name", style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'poppins_regular'
-                ))
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: TextField(
-                  controller: name,
-                  cursorColor: Color.fromARGB(255, 82, 82, 82),
-                  style: TextStyle(
-                    fontFamily: "poppins_regular",
-                    color: Color.fromARGB(255, 82, 82, 82),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Container(
+          padding: EdgeInsets.all(10),
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20, bottom: 20),
+                child: GestureDetector(
+                  onTap: () async {
+                    image = await picker.pickImage(source: ImageSource.gallery);
+                    print(image!.path);
+                    setState(() {});
+                  },
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.circular(50)),
+                    child: image == null
+                        ? Container()
+                        : Image.file(File(image!.path)),
                   ),
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
-                  )),
-            ),
-
-            // User Id
-            Padding(
-              padding: const EdgeInsets.only(bottom: 4),
-              child: Align(
-                alignment: Alignment.topLeft, 
-                child: Text("User Id", style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'poppins_regular'
-                ))
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: TextField(
-                  controller: user_id,
-                  cursorColor: Color.fromARGB(255, 82, 82, 82),
-                  style: TextStyle(
-                    fontFamily: "poppins_regular",
-                    color: Color.fromARGB(255, 82, 82, 82),
-                  ),
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
-                  )),
-            ),
 
-            // email
-            Padding(
-              padding: const EdgeInsets.only(bottom: 4),
-              child: Align(
-                alignment: Alignment.topLeft, 
-                child: Text("Email", style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'poppins_regular'
-                ))
+              // NAME
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text("Name",
+                        style: TextStyle(
+                            fontSize: 16, fontFamily: 'poppins_regular'))),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: TextField(
-                  controller: email,
-                  cursorColor: Color.fromARGB(255, 82, 82, 82),
-                  style: TextStyle(
-                    fontFamily: "poppins_regular",
-                    color: Color.fromARGB(255, 82, 82, 82),
-                  ),
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
-                  )),
-            ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: TextField(
+                    controller: name,
+                    cursorColor: Color.fromARGB(255, 82, 82, 82),
+                    style: TextStyle(
+                      fontFamily: "poppins_regular",
+                      color: Color.fromARGB(255, 82, 82, 82),
+                    ),
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(244, 141, 141, 141),
+                              width: 0)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(244, 141, 141, 141),
+                              width: 0)),
+                    )),
+              ),
 
-            // phone
-            Padding(
-              padding: const EdgeInsets.only(bottom: 4),
-              child: Align(
-                alignment: Alignment.topLeft, 
-                child: Text("Phone Number", style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'poppins_regular'
-                ))
+              // User Id
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text("User Id",
+                        style: TextStyle(
+                            fontSize: 16, fontFamily: 'poppins_regular'))),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: TextField(
-                  controller: phone_number,
-                  cursorColor: Color.fromARGB(255, 82, 82, 82),
-                  style: TextStyle(
-                    fontFamily: "poppins_regular",
-                    color: Color.fromARGB(255, 82, 82, 82),
-                  ),
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color.fromARGB(244, 141, 141, 141), width: 0)),
-                  )),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: TextField(
+                    controller: user_id,
+                    cursorColor: Color.fromARGB(255, 82, 82, 82),
+                    style: TextStyle(
+                      fontFamily: "poppins_regular",
+                      color: Color.fromARGB(255, 82, 82, 82),
+                    ),
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(244, 141, 141, 141),
+                              width: 0)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(244, 141, 141, 141),
+                              width: 0)),
+                    )),
+              ),
+
+              // email
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text("Email",
+                        style: TextStyle(
+                            fontSize: 16, fontFamily: 'poppins_regular'))),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: TextField(
+                    controller: email,
+                    cursorColor: Color.fromARGB(255, 82, 82, 82),
+                    style: TextStyle(
+                      fontFamily: "poppins_regular",
+                      color: Color.fromARGB(255, 82, 82, 82),
+                    ),
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(244, 141, 141, 141),
+                              width: 0)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(244, 141, 141, 141),
+                              width: 0)),
+                    )),
+              ),
+
+              // phone
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text("Phone Number",
+                        style: TextStyle(
+                            fontSize: 16, fontFamily: 'poppins_regular'))),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: TextField(
+                    controller: phone_number,
+                    cursorColor: Color.fromARGB(255, 82, 82, 82),
+                    style: TextStyle(
+                      fontFamily: "poppins_regular",
+                      color: Color.fromARGB(255, 82, 82, 82),
+                    ),
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(244, 141, 141, 141),
+                              width: 0)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(244, 141, 141, 141),
+                              width: 0)),
+                    )),
+              ),
+            ],
+          ),
         ),
       ),
     ));
